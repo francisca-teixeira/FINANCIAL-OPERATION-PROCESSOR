@@ -1,0 +1,44 @@
+image: python:3.12-slim
+
+stages:
+  - Static Analysis
+  - Tests
+
+Static Analysis:
+  stage: Static Analysis
+  script:
+    - echo "Running static analysis"
+    - cd ./application
+    - pip install --upgrade pip
+    - pip install pipenv
+    - pipenv install --skip-lock --system
+    - cd ../
+    - flake8 ./application/*.py
+
+Unit Test:
+  stage: Tests
+  script:
+    - echo "Running unit tests"
+    - cd ./application
+    - pip install --upgrade pip
+    - pip install pipenv
+    - pipenv install --skip-lock --system
+    - python3.12 -m pytest -vv --cov=. --cov-report html:unit_report/coverage/ --html=unit_report/report.html ../tests/unit
+  artifacts:
+    when: always
+    paths:
+        - /builds/cswsis24-ss/financial-operation-processor-group-3/application/unit_report
+
+Feature Test:
+  stage: Tests
+  script:
+    - echo "Running feature tests"
+    - cd ./application
+    - pip install --upgrade pip
+    - pip install pipenv
+    - pipenv install --skip-lock --system
+    - python3.12 -m robot -d feature_report ../tests/feature
+  artifacts:
+    when: always
+    paths:
+        - /builds/cswsis24-ss/financial-operation-processor-group-3/application/feature_report
