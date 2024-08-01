@@ -1,0 +1,5 @@
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 90.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 80.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 60.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 55.00}, "violations": []}

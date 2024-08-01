@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-html = "*"
+robotframework = "*"
+graphviz = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

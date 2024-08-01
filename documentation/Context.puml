@@ -1,0 +1,20 @@
+@startuml "System Context"
+!include <C4/C4_Container>
+
+title System Context\n
+
+skinparam DefaultTextAlignment center
+skinparam RoundCorner 15
+
+SHOW_PERSON_OUTLINE()
+LAYOUT_WITH_LEGEND()
+
+System_Ext(payment, "Payment System")
+System(fop, "Financial Operation Processor", "Receives and processes incoming operations on a bank account")
+System_Ext(core_banking, "Core Banking System")
+
+Rel(payment, fop, "Sends operations as streams of events","STDIN")
+Rel(fop, fop, "Outputs processed operations","STDOUT")
+BiRel(fop, core_banking, "Forwards processed operations")
+
+@enduml

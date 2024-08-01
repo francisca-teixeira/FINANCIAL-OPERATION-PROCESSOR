@@ -1,0 +1,5 @@
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}}
+{"debit": {"client_id": 1234, "merchant": "Burger King", "amount": 10.00, "time": "2023-07-31T10:00:00.000Z"}}
+{"debit": {"client_id": 1234, "merchant": "Jeronimo", "amount": 10.00, "time": "2023-07-31T10:05:00.000Z"}}
+{"debit": {"client_id": 1234, "merchant": "KFC", "amount": 20.00, "time": "2023-07-31T10:10:30.000Z"}}
+{"debit": {"client_id": 1234, "merchant": "McDonald's", "amount": 5.00, "time": "2023-07-31T15:05:50.000Z"}}

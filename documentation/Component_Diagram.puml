@@ -1,0 +1,30 @@
+@startuml Component Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+title Component Diagram
+
+skinparam DefaultTextAlignment center
+skinparam RoundCorner 15
+
+System(FOP, "Financial Operation Process")
+
+Container(read, "Read Operations")
+
+Container(process, "Process Operations")
+
+Container(Violations, "Violations")
+
+Container(Accept, "Accept Operation")
+
+Container(Verification, "Data Verification")
+
+Rel(FOP, process, "data")
+Rel(FOP, read, "data")
+
+Rel(read, Verification, "data")
+
+Rel(read, Violations, "error")
+Rel(process, Violations, "error")
+
+Rel(read, Accept, "data")
+Rel(process, Accept, "data")
+@enduml

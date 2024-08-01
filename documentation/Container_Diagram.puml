@@ -1,0 +1,19 @@
+@startuml Container Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+title Container diagram
+
+skinparam DefaultTextAlignment center
+skinparam RoundCorner 15
+
+System(FOP, "Financial Operation Process", "Python Script")
+
+System_Boundary(app, "Operations") {
+    System(backend_1, "Account Creation", "JSON data")
+    System(backend_2, "Debit Authorization", "JSON data")
+}
+
+ContainerDb(Transactions, "Transactions", "JSON File")
+
+Rel(app, FOP, "FIFO")
+BiRel(FOP, Transactions, "data")
+@enduml

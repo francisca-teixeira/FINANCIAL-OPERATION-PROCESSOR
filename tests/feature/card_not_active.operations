@@ -1,0 +1,2 @@
+{"account": {"client_id": 1234, "active_card": false, "available_limit": 100.00}}
+{"debit": {"client_id": 1234, "merchant": "Burger King", "amount": 10.00, "time": "2023-07-31T10:00:00.000Z"}}

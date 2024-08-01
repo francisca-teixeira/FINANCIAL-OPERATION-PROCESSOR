@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on linux)" generated="2024-07-22T12:11:49.315999" rpa="false" schemaversion="5">
+<suite id="s1" name="Feature" source="/fop/application/../tests/feature">
+<suite id="s1-s1" name="Account Already Initialized" source="/fop/application/../tests/feature/account_already_initialized.robot">
+<test id="s1-s1-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.356027" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/account_already_initialized.operations</msg>
+<msg time="2024-07-22T12:11:49.357964" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.386938" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.387300" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/account_already_initialized.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.355744" elapsed="0.031604"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.388180" level="INFO">{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": ["account-already-initialized"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.387629" elapsed="0.000595"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.388702" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.388324" elapsed="0.000412"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.388828" elapsed="0.000465"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.354634" elapsed="0.034793"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.390258" elapsed="0.000222"/>
+</kw>
+<doc>Output a violation when trying to recreate an account</doc>
+<status status="PASS" start="2024-07-22T12:11:49.339729" elapsed="0.050791"/>
+</suite>
+<suite id="s1-s2" name="Account Not Initialized" source="/fop/application/../tests/feature/account_not_initialized.robot">
+<test id="s1-s2-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.393980" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/account_not_initialized.operations</msg>
+<msg time="2024-07-22T12:11:49.396014" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.430951" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.431145" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/account_not_initialized.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.393756" elapsed="0.037415"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.432208" level="INFO">{"account": {"client_id": 0, "active_card": "false", "available_limit": 0.00}, "violations": ["account-not-initialized"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.431407" elapsed="0.000847"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.432830" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.432392" elapsed="0.000489"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.432984" elapsed="0.000510"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.393353" elapsed="0.040382"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.434387" elapsed="0.000332"/>
+</kw>
+<doc>Output a violation when trying to authorize a transaction without initialize an account</doc>
+<status status="PASS" start="2024-07-22T12:11:49.391215" elapsed="0.043612"/>
+</suite>
+<suite id="s1-s3" name="Card Not Active" source="/fop/application/../tests/feature/card_not_active.robot">
+<test id="s1-s3-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.439587" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/card_not_active.operations</msg>
+<msg time="2024-07-22T12:11:49.441522" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.473574" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.473863" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/card_not_active.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.439044" elapsed="0.034868"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.474881" level="INFO">{"account": {"client_id": 1234, "active_card": false, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": false, "available_limit": 100.00}, "violations": ["card-not-active"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.474255" elapsed="0.000716"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.475486" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.475128" elapsed="0.000400"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.475626" elapsed="0.000408"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.438692" elapsed="0.037454"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.476675" elapsed="0.000235"/>
+</kw>
+<doc>Output a violation when trying to authorize a transaction without an active card</doc>
+<status status="PASS" start="2024-07-22T12:11:49.436229" elapsed="0.040718"/>
+</suite>
+<suite id="s1-s4" name="Doubled Transaction" source="/fop/application/../tests/feature/doubled_transaction.robot">
+<test id="s1-s4-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.480291" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/doubled_transaction.operations</msg>
+<msg time="2024-07-22T12:11:49.481939" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.515447" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.515691" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/doubled_transaction.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.480063" elapsed="0.035655"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.517189" level="INFO">{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 90.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 90.00}, "violations": ["doubled-transaction"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.516491" elapsed="0.000755"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.517886" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.517385" elapsed="0.000562"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.518138" elapsed="0.000647"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.479717" elapsed="0.039214"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.519423" elapsed="0.000246"/>
+</kw>
+<doc>Output a violation when trying to authorize more than 1 transaction for the same merchand and amount in a time window of 2 minutes</doc>
+<status status="PASS" start="2024-07-22T12:11:49.477657" elapsed="0.042048"/>
+</suite>
+<suite id="s1-s5" name="High Frequency Small Interval" source="/fop/application/../tests/feature/high_frequency_small_interval.robot">
+<test id="s1-s5-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.522982" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/high_frequency_small_interval.operations</msg>
+<msg time="2024-07-22T12:11:49.524695" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.559045" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.559234" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/high_frequency_small_interval.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.522820" elapsed="0.036440"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.560311" level="INFO">{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 90.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 70.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 40.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 40.00}, "violations": ["high-frequency-small-interval"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.559732" elapsed="0.000626"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.560883" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.560466" elapsed="0.000451"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.561024" elapsed="0.000428"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.522549" elapsed="0.039122"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.562124" elapsed="0.000260"/>
+</kw>
+<doc>Output a violation when trying to authorize more than 3 transactions in a time window of 2 minutes</doc>
+<status status="PASS" start="2024-07-22T12:11:49.520448" elapsed="0.041993"/>
+</suite>
+<suite id="s1-s6" name="Insufficient Limit" source="/fop/application/../tests/feature/insufficient_limit.robot">
+<test id="s1-s6-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.565971" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/insufficient_limit.operations</msg>
+<msg time="2024-07-22T12:11:49.568529" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.598776" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.598969" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/insufficient_limit.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.565757" elapsed="0.033239"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.599797" level="INFO">{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 50.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 50.00}, "violations": ["insufficient-limit"]}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.599273" elapsed="0.000563"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.600370" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.599968" elapsed="0.000439"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.600515" elapsed="0.000596"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.565430" elapsed="0.035890"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.601894" elapsed="0.000310"/>
+</kw>
+<doc>Output a violation when trying to authorize a transaction without available limit</doc>
+<status status="PASS" start="2024-07-22T12:11:49.563189" elapsed="0.039103"/>
+</suite>
+<suite id="s1-s7" name="Regular Transaction" source="/fop/application/../tests/feature/regular_transaction.robot">
+<test id="s1-s7-t1" name="Check Output" line="12">
+<kw name="Run Process" owner="Process">
+<msg time="2024-07-22T12:11:49.605787" level="INFO">Starting process:
+../application/financial_operation_processor.py &lt; ../tests/feature/regular_transaction.operations</msg>
+<msg time="2024-07-22T12:11:49.607394" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-22T12:11:49.639021" level="INFO">Process completed.</msg>
+<msg time="2024-07-22T12:11:49.639214" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${application} &lt; ${tests_path}/regular_transaction.operations</arg>
+<arg>shell=true</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.605574" elapsed="0.033691"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.640231" level="INFO">{"account": {"client_id": 1234, "active_card": true, "available_limit": 100.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 90.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 80.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 60.00}, "violations": []}
+{"account": {"client_id": 1234, "active_card": true, "available_limit": 55.00}, "violations": []}</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.639551" elapsed="0.001291"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T12:11:49.641366" level="INFO"/>
+<arg>${result.stderr}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.640975" elapsed="0.000424"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${result.stdout}</arg>
+<arg>${expected_output}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.641492" elapsed="0.000474"/>
+</kw>
+<status status="PASS" start="2024-07-22T12:11:49.605268" elapsed="0.036918"/>
+</test>
+<kw name="Terminate All Processes" owner="Process" type="TEARDOWN">
+<arg>kill=True</arg>
+<doc>Terminates all still running processes started by this library.</doc>
+<status status="PASS" start="2024-07-22T12:11:49.642611" elapsed="0.000234"/>
+</kw>
+<doc>A set of regular transactions without violations</doc>
+<status status="PASS" start="2024-07-22T12:11:49.603089" elapsed="0.039804"/>
+</suite>
+<status status="PASS" start="2024-07-22T12:11:49.317541" elapsed="0.326081"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Feature">Feature</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Account Already Initialized">Feature.Account Already Initialized</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Account Not Initialized">Feature.Account Not Initialized</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3" name="Card Not Active">Feature.Card Not Active</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s4" name="Doubled Transaction">Feature.Doubled Transaction</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s5" name="High Frequency Small Interval">Feature.High Frequency Small Interval</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s6" name="Insufficient Limit">Feature.Insufficient Limit</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s7" name="Regular Transaction">Feature.Regular Transaction</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
